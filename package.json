@@ -19,11 +19,14 @@
   },
   "scripts": {
     "typecheck": "turbo run typecheck",
-    "build": "turbo run clean:output build",
+    "build": "turbo run build",
     "clean": "turbo run clean:output clean:modules && rm -rf node_modules && bash -O globstar -c 'rm -rf **/.turbo'",
     "clean:output": "turbo run clean:output",
     "clean:modules": "turbo run clean:modules",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yaml,yml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yaml,yml}\"",
+    "changeset": "changeset",
+    "release": "pnpm build && pnpm exec changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
