@@ -1,0 +1,42 @@
+{
+  "name": "@arbiui/tailwindcss",
+  "description": "Tailwind CSS v4 safelist stylesheet for @arbiui/react",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/arbiui/arbiui/tree/main/packages/tailwindcss#readme",
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "css",
+    "safelist",
+    "arbiui"
+  ],
+  "author": {
+    "name": "Ibrahim, Maulana",
+    "email": "ibrahim@arbisee.com",
+    "url": "https://github.com/100percentibrahim"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arbiui/arbiui.git",
+    "directory": "packages/tailwindcss"
+  },
+  "bugs": {
+    "url": "https://github.com/arbiui/arbiui/issues",
+    "email": "security@arbiui.arbisee.com"
+  },
+  "files": [
+    "src"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./src/index.css",
+    "./safelist.css": "./src/safelist.css"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=20.20.2 <24"
+  }
+}

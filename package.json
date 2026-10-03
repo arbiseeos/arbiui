@@ -1,0 +1,37 @@
+{
+  "name": "arbiui",
+  "description": "Prop-driven styling layer for Tailwind CSS v4 and React",
+  "private": true,
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/arbiui/arbiui#readme",
+  "author": {
+    "name": "Ibrahim, Maulana",
+    "email": "ibrahim@arbisee.com",
+    "url": "https://github.com/100percentibrahim"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arbiui/arbiui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arbiui/arbiui/issues",
+    "email": "security@arbiui.arbisee.com"
+  },
+  "scripts": {
+    "typecheck": "turbo run typecheck",
+    "build": "turbo run clean:output build",
+    "clean": "turbo run clean:output clean:modules && rm -rf node_modules && bash -O globstar -c 'rm -rf **/.turbo'",
+    "clean:output": "turbo run clean:output",
+    "clean:modules": "turbo run clean:modules",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.9.9",
+    "turbo": "^2.11.5",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=20.20.2 <24"
+  },
+  "packageManager": "pnpm@12.8.1"
+}

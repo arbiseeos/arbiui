@@ -1,0 +1,65 @@
+{
+  "name": "@arbiui/react",
+  "description": "Polymorphic React View component that maps declarative style props to Tailwind CSS v4 utilities",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/arbiui/arbiui/tree/main/packages/react#readme",
+  "keywords": [
+    "react",
+    "tailwind",
+    "tailwindcss",
+    "components",
+    "styling",
+    "utility-first",
+    "arbiui"
+  ],
+  "author": {
+    "name": "Ibrahim, Maulana",
+    "email": "ibrahim@arbisee.com",
+    "url": "https://github.com/100percentibrahim"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arbiui/arbiui.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/arbiui/arbiui/issues",
+    "email": "security@arbiui.arbisee.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsdown",
+    "clean:output": "rm -rf dist",
+    "clean:modules": "rm -rf node_modules"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
+  },
+  "peerDependencies": {
+    "react": "^19",
+    "@arbiui/tailwindcss": "workspace:^0.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "react": "^19.3.0",
+    "tsdown": "^0.23.0",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=20.20.2 <24"
+  }
+}
