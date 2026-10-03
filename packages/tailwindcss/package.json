@@ -25,6 +25,10 @@
     "url": "https://github.com/arbiui/arbiui/issues",
     "email": "security@arbiui.arbisee.com"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "files": [
     "src"
   ],
