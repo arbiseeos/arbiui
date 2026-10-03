@@ -51,7 +51,7 @@
   },
   "peerDependencies": {
     "react": "^19",
-    "@arbiui/tailwindcss": "workspace:^0.1.0"
+    "@arbiui/tailwindcss": "workspace:^"
   },
   "devDependencies": {
     "@types/react": "^19.3.0",
