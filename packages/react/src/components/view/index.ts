@@ -14,7 +14,7 @@ import type {
   ViewTransformProps,
   ViewInteractivityProps,
   ViewSVGProps,
-} from '../../types';
+} from '../../types/view';
 import { createElement } from 'react';
 import { cn, resolveProp, resolveTupledProp } from '../../utils';
 import { classMaps } from '../shared/constants';
@@ -466,75 +466,61 @@ export default function View<E extends ElementType = 'div'>(props: ViewProps<E>)
     bgPosition && resolveProp(cssVars, 'bg-position', bgPosition, BG_POSITIONS.includes(bgPosition) ? 'bg' : 'bg-position'),
     bgRepeat && classMaps.bgRepeat[bgRepeat],
     bgSize && resolveProp(cssVars, 'bg-size', bgSize, BG_SIZES.includes(bgSize) ? 'bg' : 'bg-size'),
-    typeof rounded === 'string'
-      ? resolveProp(cssVars, 'rounded', rounded, 'rounded')
-      : [
-          resolveProp(cssVars, 'rounded-s', rounded?.s, 'rounded-s'),
-          resolveProp(cssVars, 'rounded-e', rounded?.e, 'rounded-e'),
-          resolveProp(cssVars, 'rounded-t', rounded?.t, 'rounded-t'),
-          resolveProp(cssVars, 'rounded-r', rounded?.r, 'rounded-r'),
-          resolveProp(cssVars, 'rounded-b', rounded?.b, 'rounded-b'),
-          resolveProp(cssVars, 'rounded-l', rounded?.l, 'rounded-l'),
-          resolveProp(cssVars, 'rounded-ss', rounded?.ss, 'rounded-ss'),
-          resolveProp(cssVars, 'rounded-se', rounded?.se, 'rounded-se'),
-          resolveProp(cssVars, 'rounded-ee', rounded?.ee, 'rounded-ee'),
-          resolveProp(cssVars, 'rounded-es', rounded?.es, 'rounded-es'),
-          resolveProp(cssVars, 'rounded-tl', rounded?.tl, 'rounded-tl'),
-          resolveProp(cssVars, 'rounded-tr', rounded?.tr, 'rounded-tr'),
-          resolveProp(cssVars, 'rounded-br', rounded?.br, 'rounded-br'),
-          resolveProp(cssVars, 'rounded-bl', rounded?.bl, 'rounded-bl'),
-        ],
-    typeof border === 'boolean'
-      ? [
-          border && 'border', //
-          resolveProp(cssVars, 'border-color', borderColor, 'border'),
-          borderStyle && classMaps.borderStyle[borderStyle],
-        ]
-      : typeof border === 'string' || Array.isArray(border)
-        ? [
-            resolveTupledProp('outline', cssVars, 'border', border), //
-            typeof border === 'string' && resolveProp(cssVars, 'border-color', borderColor, 'border'),
-            borderStyle && classMaps.borderStyle[borderStyle],
-          ]
-        : [
-            border?.width ? resolveProp(cssVars, 'border', border.width, 'border', 'length') : 'border',
-            resolveProp(cssVars, 'border-color', border?.color, 'border'),
-            border?.style && classMaps.borderStyle[border.style],
-            resolveTupledProp('outline', cssVars, 'border-x', border?.x),
-            resolveTupledProp('outline', cssVars, 'border-y', border?.y),
-            resolveTupledProp('outline', cssVars, 'border-s', border?.s),
-            resolveTupledProp('outline', cssVars, 'border-e', border?.e),
-            resolveTupledProp('outline', cssVars, 'border-t', border?.t),
-            resolveTupledProp('outline', cssVars, 'border-r', border?.r),
-            resolveTupledProp('outline', cssVars, 'border-b', border?.b),
-            resolveTupledProp('outline', cssVars, 'border-l', border?.l),
-          ],
+    typeof rounded === 'string' && resolveProp(cssVars, 'rounded', rounded, 'rounded'),
+    typeof rounded === 'object' && [
+      resolveProp(cssVars, 'rounded-s', rounded?.s, 'rounded-s'),
+      resolveProp(cssVars, 'rounded-e', rounded?.e, 'rounded-e'),
+      resolveProp(cssVars, 'rounded-t', rounded?.t, 'rounded-t'),
+      resolveProp(cssVars, 'rounded-r', rounded?.r, 'rounded-r'),
+      resolveProp(cssVars, 'rounded-b', rounded?.b, 'rounded-b'),
+      resolveProp(cssVars, 'rounded-l', rounded?.l, 'rounded-l'),
+      resolveProp(cssVars, 'rounded-ss', rounded?.ss, 'rounded-ss'),
+      resolveProp(cssVars, 'rounded-se', rounded?.se, 'rounded-se'),
+      resolveProp(cssVars, 'rounded-ee', rounded?.ee, 'rounded-ee'),
+      resolveProp(cssVars, 'rounded-es', rounded?.es, 'rounded-es'),
+      resolveProp(cssVars, 'rounded-tl', rounded?.tl, 'rounded-tl'),
+      resolveProp(cssVars, 'rounded-tr', rounded?.tr, 'rounded-tr'),
+      resolveProp(cssVars, 'rounded-br', rounded?.br, 'rounded-br'),
+      resolveProp(cssVars, 'rounded-bl', rounded?.bl, 'rounded-bl'),
+    ],
+    (typeof border === 'boolean' || typeof border === 'string' || Array.isArray(border)) && [
+      typeof border === 'boolean' ? border && 'border' : resolveTupledProp('outline', cssVars, 'border', border),
+      !Array.isArray(border) && resolveProp(cssVars, 'border-color', borderColor, 'border'),
+      borderStyle && classMaps.borderStyle[borderStyle],
+    ],
+    !Array.isArray(border) &&
+      typeof border === 'object' && [
+        border?.width ? resolveProp(cssVars, 'border', border.width, 'border', 'length') : 'border',
+        resolveProp(cssVars, 'border-color', border?.color, 'border'),
+        border?.style && classMaps.borderStyle[border.style],
+        resolveTupledProp('outline', cssVars, 'border-x', border?.x),
+        resolveTupledProp('outline', cssVars, 'border-y', border?.y),
+        resolveTupledProp('outline', cssVars, 'border-s', border?.s),
+        resolveTupledProp('outline', cssVars, 'border-e', border?.e),
+        resolveTupledProp('outline', cssVars, 'border-t', border?.t),
+        resolveTupledProp('outline', cssVars, 'border-r', border?.r),
+        resolveTupledProp('outline', cssVars, 'border-b', border?.b),
+        resolveTupledProp('outline', cssVars, 'border-l', border?.l),
+      ],
     resolveProp(cssVars, 'divide-x', divideX, 'divide-x', 'length'),
     resolveProp(cssVars, 'divide-y', divideY, 'divide-y', 'length'),
     resolveProp(cssVars, 'divide-color', divideColor, 'divide'),
     divideStyle && classMaps.divideStyle[divideStyle],
     divideXReverse && 'divide-x-reverse',
     divideYReverse && 'divide-y-reverse',
-    typeof outline === 'boolean'
-      ? [
-          outline && 'outline', //
-          resolveProp(cssVars, 'outline-color', outlineColor, 'outline'),
-          outlineStyle && classMaps.outlineStyle[outlineStyle],
-          resolveProp(cssVars, 'outline-offset', outlineOffset, 'outline-offset'),
-        ]
-      : typeof outline === 'string' || Array.isArray(outline)
-        ? [
-            resolveTupledProp('outline', cssVars, 'outline', outline),
-            typeof outline === 'string' && resolveProp(cssVars, 'outline-color', outlineColor, 'outline'),
-            outlineStyle && classMaps.outlineStyle[outlineStyle],
-            resolveProp(cssVars, 'outline-offset', outlineOffset, 'outline-offset'),
-          ]
-        : [
-            resolveProp(cssVars, 'outline', outline?.width, 'outline', 'length'),
-            resolveProp(cssVars, 'outline-color', outline?.color, 'outline'),
-            outline?.style && classMaps.outlineStyle[outline.style],
-            resolveProp(cssVars, 'outline-offset', outline?.offset, 'outline-offset'),
-          ],
+    (typeof outline === 'boolean' || typeof outline === 'string' || Array.isArray(outline)) && [
+      typeof outline === 'boolean' ? outline && 'outline' : resolveTupledProp('outline', cssVars, 'outline', outline),
+      !Array.isArray(outline) && resolveProp(cssVars, 'outline-color', outlineColor, 'outline'),
+      outlineStyle && classMaps.outlineStyle[outlineStyle],
+      resolveProp(cssVars, 'outline-offset', outlineOffset, 'outline-offset'),
+    ],
+    !Array.isArray(outline) &&
+      typeof outline === 'object' && [
+        resolveProp(cssVars, 'outline', outline?.width, 'outline', 'length'),
+        resolveProp(cssVars, 'outline-color', outline?.color, 'outline'),
+        outline?.style && classMaps.outlineStyle[outline.style],
+        resolveProp(cssVars, 'outline-offset', outline?.offset, 'outline-offset'),
+      ],
     resolveProp(cssVars, 'shadow', shadow, 'shadow'),
     resolveProp(cssVars, 'shadow-color', shadowColor, 'shadow', 'color'),
     resolveProp(cssVars, 'inset-shadow', insetShadow, 'inset-shadow'),
@@ -612,17 +598,15 @@ export default function View<E extends ElementType = 'div'>(props: ViewProps<E>)
     resolveProp(cssVars, 'border-y-spacing', borderYSpacing, 'border-spacing-y'),
     tableLayout && classMaps.tableLayout[tableLayout],
     captionSide && classMaps.captionSide[captionSide],
-    typeof transition === 'boolean'
-      ? transition && 'transition'
-      : typeof transition === 'string'
-        ? resolveProp(cssVars, 'transition', transition, 'transition')
-        : [
-            resolveProp(cssVars, 'transition', transition?.property, 'transition'),
-            transition?.behavior && classMaps.transitionBehavior[transition.behavior],
-            resolveProp(cssVars, 'transition-duration', transition?.duration, 'duration'),
-            resolveProp(cssVars, 'transition-function', transition?.function, 'ease'),
-            resolveProp(cssVars, 'transition-delay', transition?.delay, 'delay'),
-          ],
+    typeof transition === 'boolean' && transition && 'transition',
+    typeof transition === 'string' && resolveProp(cssVars, 'transition', transition, 'transition'),
+    typeof transition === 'object' && [
+      resolveProp(cssVars, 'transition', transition?.property, 'transition'),
+      transition?.behavior && classMaps.transitionBehavior[transition.behavior],
+      resolveProp(cssVars, 'transition-duration', transition?.duration, 'duration'),
+      resolveProp(cssVars, 'transition-function', transition?.function, 'ease'),
+      resolveProp(cssVars, 'transition-delay', transition?.delay, 'delay'),
+    ],
     resolveProp(cssVars, 'animate', animate, 'animate'),
     backface && classMaps.backface[backface],
     resolveProp(cssVars, 'perspective', perspective, 'perspective'),
