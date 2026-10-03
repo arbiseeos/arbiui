@@ -182,7 +182,7 @@ importers:
   packages/react:
     dependencies:
       '@arbiui/tailwindcss':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^
         version: link:../tailwindcss
       clsx:
         specifier: ^2.1.1
