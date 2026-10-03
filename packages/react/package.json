@@ -28,8 +28,7 @@
     "email": "security@arbiui.arbisee.com"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "files": [
     "dist"
