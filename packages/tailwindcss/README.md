@@ -5,7 +5,7 @@
 ## Requirements
 
 - **Tailwind CSS 4.0** or later (peer dependency)
-- **Node.js 20.20.2** or later, below version **24** (see `engines` in the package manifest)
+- **Node.js 22.14.0** or later (see `engines` in the package manifest)
 
 The package contains only CSS. It has no build step and no JavaScript entry points.
 

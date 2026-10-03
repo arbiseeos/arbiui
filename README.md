@@ -13,7 +13,7 @@
 
 - **React 19** for `@arbiui/react`
 - **Tailwind CSS 4.0** or later for `@arbiui/tailwindcss`
-- **Node.js 20.20.2** or later, below version **24**
+- **Node.js 22.14.0** or later
 - ESM-compatible tooling. Both packages are published as ES modules only.
 
 ## Installation

@@ -7,7 +7,7 @@ React component package for **ArbiUI**. It exports `View`, a polymorphic styling
 - **React 19** (peer dependency)
 - `@arbiui/tailwindcss` **0.1.0** or compatible (peer dependency), imported into your Tailwind entry stylesheet
 - **Tailwind CSS 4.0** or later, configured in the application
-- **Node.js 20.20.2** or later, below version **24** (see `engines` in the package manifest)
+- **Node.js 22.14.0** or later (see `engines` in the package manifest)
 - ESM-only package. It ships ES modules and TypeScript declarations, with no CommonJS build.
 
 ## Installation

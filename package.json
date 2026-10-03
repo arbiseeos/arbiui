@@ -32,7 +32,7 @@
     "typescript": "^7.0.2"
   },
   "engines": {
-    "node": ">=20.20.2 <24"
+    "node": ">=22.14.0"
   },
   "packageManager": "pnpm@12.8.1"
 }
