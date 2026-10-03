@@ -9,8 +9,6 @@ concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false
 
-permissions: {}
-
 jobs:
   select-mode:
     name: Select release mode
@@ -21,7 +19,6 @@ jobs:
 
     outputs:
       mode: ${{ steps.select-mode.outputs.mode }}
-      publish-plan-artifact-id: ${{ steps.select-mode.outputs.publish-plan-artifact-id }}
 
     steps:
       - name: Checkout
@@ -37,6 +34,7 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
+          package-manager-cache: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -69,6 +67,7 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
+          package-manager-cache: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -104,7 +103,8 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: pnpm
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
