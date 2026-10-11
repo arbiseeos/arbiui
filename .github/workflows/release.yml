@@ -10,8 +10,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
   id-token: write
 
 jobs:
@@ -22,6 +21,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Create release bot token
+        id: release-bot-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -41,7 +49,7 @@ jobs:
       - name: Create release PR or publish packages
         uses: changesets/action@v2
         with:
-          github-token: ${{ github.token }}
+          github-token: ${{ steps.release-bot-token.outputs.token }}
           version-script: pnpm changeset version
           publish-script: pnpm release
           commit-message: 'chore(release): version packages'
