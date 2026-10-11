@@ -3,7 +3,7 @@
   "description": "Prop-driven styling layer for Tailwind CSS v4 and React",
   "private": true,
   "license": "Apache-2.0",
-  "homepage": "https://github.com/arbiui/arbiui#readme",
+  "homepage": "https://github.com/arbiseeos/arbiui#readme",
   "author": {
     "name": "Ibrahim, Maulana",
     "email": "ibrahim@arbisee.com",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arbiui/arbiui.git"
+    "url": "git+https://github.com/arbiseeos/arbiui.git"
   },
   "bugs": {
-    "url": "https://github.com/arbiui/arbiui/issues",
+    "url": "https://github.com/arbiseeos/arbiui/issues",
     "email": "security@arbiui.arbisee.com"
   },
   "scripts": {

@@ -3,7 +3,7 @@
   "description": "Polymorphic React View component that maps declarative style props to Tailwind CSS v4 utilities",
   "version": "0.1.1",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/arbiui/arbiui/tree/main/packages/react#readme",
+  "homepage": "https://github.com/arbiseeos/arbiui/tree/main/packages/react#readme",
   "keywords": [
     "react",
     "tailwind",
@@ -20,11 +20,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arbiui/arbiui.git",
+    "url": "git+https://github.com/arbiseeos/arbiui.git",
     "directory": "packages/react"
   },
   "bugs": {
-    "url": "https://github.com/arbiui/arbiui/issues",
+    "url": "https://github.com/arbiseeos/arbiui/issues",
     "email": "security@arbiui.arbisee.com"
   },
   "publishConfig": {
